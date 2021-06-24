@@ -15,6 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable {/**
@@ -32,7 +34,7 @@ public class User implements Serializable {/**
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private String nome;
+	private String name;
 	@Column(unique=true)
 	private String email;
 	private String password;
@@ -44,4 +46,11 @@ public class User implements Serializable {/**
 	)
 	private Set<Role> roles = new HashSet<>();
 
+	public User(Long id, String name, String email, String password) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 }
