@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,11 @@ import com.zuptrainingcloud.service.WorkerService;
 public class WorkerResources {
 	
 	private static Logger Logger = LoggerFactory.getLogger(WorkerResources.class);
+	
+	@Value("${test.config}")
+	private String testConfig;
+	
+	
 	@Autowired
 	private Environment env;
 	
@@ -38,5 +44,13 @@ public class WorkerResources {
 		Logger.info("PORT: "+ env.getProperty("local.server.port"));
 		
 		return ResponseEntity.ok().body(workerService.getByIdWorker(id));
+	}
+	
+	@GetMapping(value="/configs")
+	public ResponseEntity<Void> getConfigs(){
+	
+		Logger.info("CONFIG =: "+ testConfig);
+		
+		return ResponseEntity.noContent().build();
 	}
 }
