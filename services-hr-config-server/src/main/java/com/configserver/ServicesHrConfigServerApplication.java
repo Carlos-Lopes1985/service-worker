@@ -1,15 +1,29 @@
 package com.configserver;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 @EnableConfigServer
 @SpringBootApplication
-public class ServicesHrConfigServerApplication {
+public class ServicesHrConfigServerApplication implements CommandLineRunner	 {
 
+	@Value("${spring.cloud.config.server.git.username}")
+	private String userName;
+	
+	@Value("${spring.cloud.config.server.git.password}")
+	private String password;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ServicesHrConfigServerApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		System.out.println("USERNAME "+userName +"-"+"SENHA: "+password);
+		
 	}
 
 }
