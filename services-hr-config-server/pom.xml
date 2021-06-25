@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.configserver</groupId>
-	<artifactId>services-hr-config-server</artifactId>
+	<artifactId>hr-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>services-hr-config-server</name>
+	<name>hr-config-server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
